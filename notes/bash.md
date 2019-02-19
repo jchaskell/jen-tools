@@ -21,4 +21,28 @@ For more information on sed, see this [man page](https://www.gnu.org/software/se
 Deletes all files with the ".pyc" extension.
 ```
 find . -name '*.pyc' -delete
+```
+
+## Tmux
+### Really basic commands
+```
+# New named session
+tmux new -s name
+
+# Attach to an existing session
+tmux a -t name
+
+# List sessions
+tmux ls
+
+# Kill session
+tmux kill-session -t name
 ``` 
+Windows - all require your prefix before the command (the default is `ctrl+b`)
+```
+c   # create window
+w   # list windows
+n   # next window
+p   # previous window
+&   # kill window
+```
