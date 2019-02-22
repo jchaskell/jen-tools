@@ -40,4 +40,54 @@ Then, if someone else wants to replicate your environment, they can run `pip ins
 
 To stop working in your virtual environment, run `deactivate`.
 
+### Building Packages
+
+If you have a project that has multiple directories from which you want to call functions or applications, Python's `__init__.py` file allows you to [treat directories as containing packages](https://docs.python.org/3/tutorial/modules.html#packages). This is also useful if you want tests to live in a different folder. 
+
+### Unit tests
+
+Python's main unit test framework is [unittest](https://docs.python.org/3/library/unittest.html). The documentation is pretty helpful.
+
+In your test script, you create a class extending `unittest.TestCase` which should include a bunch of methods that mimic the functions and methods you want to test but are prefixed by `test_`. For example:
+```
+import unittest
+
+class TestX(unittest.TestCase):
+
+    def test_upper(self):
+        self.assertEqual('foo'.upper(), 'FOO')
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+The tests can be run from the command line as a module or as a class. For example, in a project I have, I run them with:
+```
+python -m unittest test.test_scrape_congressional_record
+```
+
+The module has multiple test classes, and this command runs them both.
+
+The official documentation lists all of the assert statements that the package has. Additionally, it allows you to define `setUp(self)` and `tearDown(self)` within a test class that are run at the beginning and end of the set of tests. This allows you, for example, to set up and then delete a temporary directory that tests can write to.
+
+#### Mocks
+Some things are inherently hard to write unit tests for. In particular, http requests. The `mock_requests` [package](https://requests-mock.readthedocs.io/en/latest/) allows you to set up mock requests in a way that is very simple (so simple, that it took me awhile to understand because I thought it had to be more complicated).
+
+If the function you are testing is making an http request, the first thing you need to do is add one before the function definition:
+```
+@requests_mock.Mocker()
+def test_http_thing(self, mocker):
+```
+
+Then, inside the method, you need to run:
+```
+moc$ker.get(url, text = mock_text)
+``` 
+`url` is the web address that you want to mimic the http request from (as a string). `mock_text` is a string of what that request should return. The text can easily be read in from a file.
+
+That is it. Now when you run the test function, when it gets to an http request, as long as the address is specified correctly for the mocker, the request will return your desired text.
+
+TODO: learn more about other mock functionality and how the package internals work. 
+
+
  
