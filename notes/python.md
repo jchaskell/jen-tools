@@ -89,5 +89,19 @@ That is it. Now when you run the test function, when it gets to an http request,
 
 TODO: learn more about other mock functionality and how the package internals work. 
 
+## Things I forget
 
+`__file__` is set to the file name
+
+If/else in list comprehension
+
+```
+l = [22, 13, 24, 56]
+[x + 1 if x >= 23 for x in l]
+```
+
+Loop through two lists with zip
+```
+for x, y in zip(a, b):
+```
  
