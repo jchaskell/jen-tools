@@ -89,6 +89,9 @@ That is it. Now when you run the test function, when it gets to an http request,
 
 TODO: learn more about other mock functionality and how the package internals work. 
 
+## Regular Expressions
+The [documentation](https://docs.python.org/3/library/re.html#match-objects) for the `re` library is pretty good.
+
 ## Things I forget
 
 `__file__` is set to the file name
@@ -104,4 +107,11 @@ Loop through two lists with zip
 ```
 for x, y in zip(a, b):
 ```
- 
+Dictionaries
+```
+d = {} # or d = {"key": "value"}
+d["newkey"] = d["newvalue"]
+```
+
+Values in dictionaries can be anything (and can vary within a dictionary - so
+some could be strings, while others could be lists)
