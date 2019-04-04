@@ -3,6 +3,21 @@
 ```
 find . -name 'filename'
 ```
+
+* `mindepth` and `maxdepth` options refer to directory depth
+* Find just files (not directories): `find "hello.txt" -type f`
+
+## GREP
+Search only in a certain type of file: `grep -r --include=*.R "search regex"`
+
+Print out lines before and after:
+```
+grep -A 10 "hello" # also prints 10 lines after each "hello"
+grep -B 5 "hello" # also prints 5 lines before each "hellow"
+```
+
+Limit results returned from grep (e.g. to first 5 results): `grep -m 5 "hello"`
+
 ## SCP
 Let's you move files to and from remote hosts.
 
