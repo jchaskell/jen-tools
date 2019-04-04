@@ -42,6 +42,14 @@ Deletes all files with the ".pyc" extension.
 find . -name '*.pyc' -delete
 ```
 
+## AWS S3
+* AWS list files: `aws s3 ls <bucket>`
+* Copy files (either locally to AWS or within AWS): `aws s3 cp <file-name>`
+- add `--recursive` if necessary; may also need to add `--sse`
+* Look at the head of a file: `aws s3 cp <file> - | head`
+* A better way to copy everything recursively: `aws s3 sync <source-path>
+    <destination-path>`
+
 ## Tmux
 ### Really basic commands
 ```
