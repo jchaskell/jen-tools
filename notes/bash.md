@@ -18,6 +18,28 @@ grep -B 5 "hello" # also prints 5 lines before each "hellow"
 
 Limit results returned from grep (e.g. to first 5 results): `grep -m 5 "hello"`
 
+## Various Commands
+
+* control-r - reverse search
+* control-a - jump to beginning of line
+* control-e - jump to end of line
+* control-u - clears from cursor to beginning of the line
+* control-l - clear
+* control-d - exit
+* !!        - repeat previous command
+* !curl     - run the last  command that started with "curl"
+* wc <file> - word count - gives you lines, words, bytes
+* ping      - pings a server to see if it's working
+* ps        - list all processes
+* kill -9 <PID> - kill process
+* Defining variables: `var=hello`
+* Displaying variables: `echo $var` (note: echo var will return 'bar', not
+    'hello')
+* Concatenating variables: path="${HOME_DIR}/files"
+* `^[A]^[B]` takes previous command and replaces A with B
+* `cat > <file-name>` lets you type in file (control-d to leave)
+* `cat <file-name> | nl` prints line numbers
+
 ## SCP
 Let's you move files to and from remote hosts.
 
