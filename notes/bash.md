@@ -3,6 +3,21 @@
 ```
 find . -name 'filename'
 ```
+## SCP
+Let's you move files to and from remote hosts.
+
+Note: both of these are run locally
+```
+# From local to remote
+scp <local-file> <remote>:<remote-file-path>
+
+# From remote to local
+scp <remote>:<remote-file-path> <local-file-path>
+```
+
+Flags
+`-r`    recursively copy files
+`-p`    preserve modification/access times from original file
 
 ## Actions on Multiple Files
 ### Find and Replace Across Multiple Files
