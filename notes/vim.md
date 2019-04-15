@@ -1,7 +1,7 @@
 # Vim
 ## Movement
 ```
-e        #move to end of word
+e       #move to end of word
 w       #move forward to beg of word
 3w      #move forward 3 words
 b       #move back to beg of word
@@ -25,7 +25,7 @@ daw     #delete word under cursor
 ^d      #page down
 ^O      #jump to previous position system wide
 ^I      #jump to next position system wide
-:jumps      #view recent jumps
+:jumps  #view recent jumps
 
 yy      #yank (copy) current line
 5Y      #yank 5 lines
@@ -35,6 +35,18 @@ p/P     #paste after/before cursors
 ```
 
 ## Deletion
+```
+x       # delete current character
+dw      # delete current word
+dd      # delete current line
+5dd     # delete 5 lines
+
+d$      # delete to end of line
+d0      # delete to beg of line
+
+:1,.d   # delete to beg of file
+:.,$d   # delete to end of file
+```
 
 ## Find and Replace
 ```
