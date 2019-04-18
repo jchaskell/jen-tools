@@ -89,8 +89,32 @@ That is it. Now when you run the test function, when it gets to an http request,
 
 TODO: learn more about other mock functionality and how the package internals work. 
 
+## CI
+[Travis file](https://docs.python-guide.org/scenarios/ci/) for python
+
 ## Regular Expressions
 The [documentation](https://docs.python.org/3/library/re.html#match-objects) for the `re` library is pretty good.
+
+## File Systems
+
+```
+os.getcwd()     # get current working directory
+os.mkdir(path)  # make directory
+os.mkdirs(path) # make a directory with subdirectories (so multiple layers at
+once)
+os.remove(path) # deletes a file
+os.rmdir(path)  # deletes a directory
+shutil.rmtree() # removes entirey directory tree
+```
+
+Temp files
+
+```
+import tempfile
+
+with tempfile.TemporaryDirectory() as directory:
+    # do things with the temporary direcotry
+```
 
 ## Things I forget
 
