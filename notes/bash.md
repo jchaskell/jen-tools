@@ -110,3 +110,5 @@ n   # next window
 p   # previous window
 &   # kill window
 ```
+
+Swap panes: prefix + {/}

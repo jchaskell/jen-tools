@@ -25,6 +25,9 @@ To get rid of all changes and go back to another commit:
 `git reset --hard <commit id>` to go back to a different commit
 `git checkout -- <file name>` will reset the file to HEAD
 
+Undo git reset hard
+`git reset ORIG_HEAD`
+
 ## Resources
 Add an existing project to github:
 [link](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/)   

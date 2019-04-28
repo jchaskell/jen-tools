@@ -131,6 +131,11 @@ Loop through two lists with zip
 ```
 for x, y in zip(a, b):
 ```
+Get the index in a loop
+```
+for i, page in enumerate(pages):
+```
+
 Dictionaries
 ```
 d = {} # or d = {"key": "value"}
@@ -139,3 +144,7 @@ d["newkey"] = d["newvalue"]
 
 Values in dictionaries can be anything (and can vary within a dictionary - so
 some could be strings, while others could be lists)
+
+## Good docs pages
+[re](https://docs.python.org/3/library/re.html)
+[argparse](https://docs.python.org/3/library/argparse.html)
