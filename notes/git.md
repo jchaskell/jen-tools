@@ -19,6 +19,9 @@ Append changes to previous commit:
 Delete a branch
 `git branch -d <branch name>`
 
+View log with just one line per commit
+`git log --pretty=oneline`
+
 Git reset:
 To get rid of all changes and go back to another commit:
 `git reset --hard HEAD` to go back to last commit
@@ -27,6 +30,20 @@ To get rid of all changes and go back to another commit:
 
 Undo git reset hard
 `git reset ORIG_HEAD`
+
+If you branched off of the wrong branch (branch1) instead of master and want to
+eliminate those commits:
+`git rebase --onto master branch1 branch2`
+
+Take one commit from another branch:
+`git cherry-pick <commit hash>`
+
+See previous n commits and edit them using `pick` or `reword` or other options
+- choose squash for squashing commits
+`git rebase -i HEAD~n`
+
+Merge all commits from another branch as 1 commit
+`git merge --squash <branch>`
 
 ## Resources
 Add an existing project to github:
