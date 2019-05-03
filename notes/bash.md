@@ -40,6 +40,71 @@ Limit results returned from grep (e.g. to first 5 results): `grep -m 5 "hello"`
 * `cat > <file-name>` lets you type in file (control-d to leave)
 * `cat <file-name> | nl` prints line numbers
 
+## SED
+
+Used for substitution - similar to substitution in vim: `s/ / /g`
+
+Syntax: `"hello" | sed "s/l/\*/g"`
+
+Capture groups behave normally: `s/([A-Z])(a-z)+/\1/g`
+You can make things upper/lower case in the replace clause really easily:
+`s/(^|_)/([a-z])/\U\2/g`
+
+Flags: note - flags (and general functionality) is very different in the Mac
+version of sed. Download the GNU version!
+* r - for regex extended
+* i - edit files in place 
+
+## Shell scripting
+
+Variables:
+`VAR=''`
+Use `$VAR` to refer to variables and `"$VAR"` to get shell to expand the
+variable name and preserve whitespace i.e. `echo "path/to/"$VAR""`
+
+
+If / then sequence generally used:
+```
+if [ $# -ne 1 ]; then
+    echo "ERROR"
+    exit 1
+fi
+```
+Use `if [   ] || [   ]` for or
+
+Though
+```
+if <commands1>
+then
+    <commands2>
+else 
+    <commands3>
+fi
+```
+also works. Using `[]` means it is a traditional shell `test` command that
+returns an exit code. `[[]]` is from ksh but works on other shells as well. 
+
+[The first answer
+here](https://unix.stackexchange.com/questions/306111/what-is-the-difference-between-the-bash-operators-vs-vs-vs) has a good explanation
+
+`$` denotes command line arguments; `$1` gives you the first one (that's not
+the script); `$#` gives you the count
+`ne` is `!=`
+
+CD into the directory of the file that's being run: `cd "$(dirname "$0")"`
+`dirname` gives you the directory of the file path you give it
+
+To test if a directory exists (or doesn't exist):
+```
+if [ -d "$DIRECTORY" ]; then
+
+fi
+
+if [ -d "$DIRECTORY" ]; then
+
+fi
+```
+
 ## SCP
 Let's you move files to and from remote hosts.
 
@@ -101,6 +166,9 @@ tmux ls
 
 # Kill session
 tmux kill-session -t name
+
+# Display tmux session name
+tmux display-message -p '#S'
 ``` 
 Windows - all require your prefix before the command (the default is `ctrl+b`)
 ```
