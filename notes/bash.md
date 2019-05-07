@@ -18,6 +18,11 @@ grep -B 5 "hello" # also prints 5 lines before each "hellow"
 
 Limit results returned from grep (e.g. to first 5 results): `grep -m 5 "hello"`
 
+Turning on colors with grep is really awesome until it's not. It changes the
+output unless you pipe to another command or save to a file. This caused me
+a lot of pain. See
+[this](https://linuxcommando.blogspot.com/2007/10/grep-with-color-output.html).
+
 ## Various Commands
 
 * control-r - reverse search
@@ -103,6 +108,22 @@ fi
 if [ -d "$DIRECTORY" ]; then
 
 fi
+```
+
+Current working directory is environmental variable `$PWD`. If you want to just
+get the last folder: `"${PWD##*/}"`. For more on parameter expansion, see (this)[https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html]
+
+*Diff* gives you the difference in the output of two commands. For example:
+```
+```
+
+## SED
+When using SED's substitution, you need to escape some characters. But what if
+you want to take the keyword from variable input? Use this to add escapes
+(taken from
+(here)[https://stackoverflow.com/questions/407523/escape-a-string-for-a-sed-replace-pattern]):
+```
+sed -e 's/[]\/$*.^[]/\\&/g'
 ```
 
 ## SCP
