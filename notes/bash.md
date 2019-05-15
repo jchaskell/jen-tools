@@ -23,6 +23,12 @@ output unless you pipe to another command or save to a file. This caused me
 a lot of pain. See
 [this](https://linuxcommando.blogspot.com/2007/10/grep-with-color-output.html).
 
+### Flags
+
+`-l` just prints the names of files
+`--include`/`--include-dir`/`--exclude`/`--exclude-dir` lets you add patterns
+for inclusion or exclusion of specific files or directories
+
 ## Various Commands
 
 * control-r - reverse search
