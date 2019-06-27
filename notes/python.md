@@ -124,7 +124,8 @@ If/else in list comprehension
 
 ```
 l = [22, 13, 24, 56]
-[x + 1 if x >= 23 for x in l]
+[x + 1 for x in l if x >= 23]
+[x - 1 if x >= 23 else x for x in l]
 ```
 
 Loop through two lists with zip
