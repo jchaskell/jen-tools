@@ -116,6 +116,10 @@ with tempfile.TemporaryDirectory() as directory:
     # do things with the temporary direcotry
 ```
 
+## Strings
+To include the delimiters in the resulting list when splitting strings:
+`re.split("(delimiter)", text)`
+
 ## Things I forget
 
 `__file__` is set to the file name
@@ -145,6 +149,8 @@ d["newkey"] = d["newvalue"]
 
 Values in dictionaries can be anything (and can vary within a dictionary - so
 some could be strings, while others could be lists)
+
+
 
 ## Good docs pages
 [re](https://docs.python.org/3/library/re.html)
