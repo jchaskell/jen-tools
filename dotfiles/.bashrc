@@ -36,6 +36,12 @@ alias grh='git reset --hard'
 alias grm='git rebase master'
 alias gst='git stash'
 
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+
 # Show git branch on prompt
 # first sed command finds the row with the star
 # second sed command puts () around it
