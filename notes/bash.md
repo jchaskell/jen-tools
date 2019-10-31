@@ -8,6 +8,19 @@ find . -name 'filename'
 * Find just files (not directories): `find "hello.txt" -type f`
 
 ## GREP
+Filters a file line by line against a pattern: `grep <pattern> <file>`
+Example: `echo '$line' | grep <pattern>`
+
+Flags:
+* -v    inverts match
+* -r    interprets pattern as literal string
+* -H/-h print (or don't print) matched filename
+* -i    case insensitive
+* -l    prints names of files that match instead
+* -n    prints line number
+* -w    forces the pattern to match an entire word
+* -x    forces patterns to match the whole line
+
 Search only in a certain type of file: `grep -r --include=*.R "search regex"`
 
 Print out lines before and after:
@@ -43,6 +56,8 @@ for inclusion or exclusion of specific files or directories
 * ping      - pings a server to see if it's working
 * ps        - list all processes
 * kill -9 <PID> - kill process
+* Look at a process id: `ps aux | grep pid`
+* Look at MY processes: `ps aux | grep uname`
 * Defining variables: `var=hello`
 * Displaying variables: `echo $var` (note: echo var will return 'bar', not
     'hello')
@@ -50,6 +65,19 @@ for inclusion or exclusion of specific files or directories
 * `^[A]^[B]` takes previous command and replaces A with B
 * `cat > <file-name>` lets you type in file (control-d to leave)
 * `cat <file-name> | nl` prints line numbers
+* cd _      - goes to previous directory
+* ~/.script.sh  run an executable script
+* `chmod 755 <scriptname>` makes a file executable on a Mac
+
+## cp
+Flags helpful when copying directories:
+* -a    preserve special attributes such as ownership, timestamps, etc
+* -v    verbose output
+* -r    copy directories recursively
+
+## cut
+Cut based on line numbers: `cut -c 1 doc.txt` (cuts first column)
+Cut based on fields: `cut -f 1 doc.txt` (cuts first field)
 
 ## SED
 
@@ -65,6 +93,19 @@ Flags: note - flags (and general functionality) is very different in the Mac
 version of sed. Download the GNU version!
 * r - for regex extended
 * i - edit files in place 
+
+When using SED's substitution, you need to escape some characters. But what if
+you want to take the keyword from variable input? Use this to add escapes
+(taken from
+(here)[https://stackoverflow.com/questions/407523/escape-a-string-for-a-sed-replace-pattern]):
+```
+sed -e 's/[]\/$*.^[]/\\&/g'
+```
+
+## awk
+
+Add up a set of values from one field in a file
+`cut -f 2 log.txt | awk '{total = total + $1}END{print total}'`
 
 ## Shell scripting
 
@@ -93,7 +134,7 @@ else
 fi
 ```
 also works. Using `[]` means it is a traditional shell `test` command that
-returns an exit code. `[[]]` is from ksh but works on other shells as well. 
+returns an exit code. `[[]]` is from ksh but works on other shells as well.
 
 [The first answer
 here](https://unix.stackexchange.com/questions/306111/what-is-the-difference-between-the-bash-operators-vs-vs-vs) has a good explanation
@@ -116,20 +157,13 @@ if [ -d "$DIRECTORY" ]; then
 fi
 ```
 
+Test if a file exists: `if [[ -f "$file" ]]`
+
 Current working directory is environmental variable `$PWD`. If you want to just
 get the last folder: `"${PWD##*/}"`. For more on parameter expansion, see (this)[https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html]
 
 *Diff* gives you the difference in the output of two commands. For example:
 ```
-```
-
-## SED
-When using SED's substitution, you need to escape some characters. But what if
-you want to take the keyword from variable input? Use this to add escapes
-(taken from
-(here)[https://stackoverflow.com/questions/407523/escape-a-string-for-a-sed-replace-pattern]):
-```
-sed -e 's/[]\/$*.^[]/\\&/g'
 ```
 
 ## SCP
@@ -142,6 +176,9 @@ scp <local-file> <remote>:<remote-file-path>
 
 # From remote to local
 scp <remote>:<remote-file-path> <local-file-path>
+
+# SCP an entire folder
+scp -r <from-path> <to-path>
 ```
 
 Flags
@@ -207,3 +244,8 @@ p   # previous window
 ```
 
 Swap panes: prefix + {/}
+Make pane full window & back again: prefix + z
+Kill entire session: prefix + kill
+
+Two people can attach to the same session [see
+here](ttps://www.hamvocke.com/blog/remote-pair-programming-with-tmux/)
