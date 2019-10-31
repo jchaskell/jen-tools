@@ -64,7 +64,13 @@ It's also possible to use markers to indicate start/stop
 :s/copyright \zs2007\ze All Rights Reserved/2008/     #replaces just the year in that context
 ```
 
-If you have a cursor on a word, you can press + to search for it then can sub for it with: `:%s//bar/g`
+If you have a cursor on a word, you can press * to search for it forward or # backward then can sub for it with: `:%s//bar/g`
+
+Search backward with `?` instead of '/'
+
+`3/pattern` searches for the 3rd occurrence of pattern
+
+More complicated stuff:
 ```
 :%s/foo/<c-r><c-w>/g        # press control R/W and it fills in word under cursor
 :%s/foo/<c-r>a/g or :%s/foo/<c-r>a/=@a/g    # <c-r> adds contents of register a; =@a doesn’t fill in text (helps with a lot of text)
@@ -102,7 +108,7 @@ Buffers allow you to open up different sets of files in Vim. See [this resource]
 ## Visual Mode
 
 Use `:v` to enter visual mode and `:V` to enter visual mode and select entire
-lines
+lines. Exit visual mode with <esc><esc>
 
 ### Copy and paste
 
@@ -122,6 +128,10 @@ Note: It would be good to have a shortcut for this
 ,p          # my shortcut for sending buffer to python
 :2,7w myfile.txt    # writes lines 2-7 to a file so can run in python
 ```
+
+## Insert on multiple lines
+^V; j the number of times for the number of lines you want to insert on; I;
+type what you want; <esc>
 
 ## Other
 Undo in command mode
