@@ -105,6 +105,9 @@ once)
 os.remove(path) # deletes a file
 os.rmdir(path)  # deletes a directory
 shutil.rmtree() # removes entirey directory tree
+
+Paths:
+pathlib: `Path.home()`
 ```
 
 Temp files
@@ -155,3 +158,5 @@ some could be strings, while others could be lists)
 ## Good docs pages
 [re](https://docs.python.org/3/library/re.html)
 [argparse](https://docs.python.org/3/library/argparse.html)
+[logging](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial)
+[Jupyter](https://jupyter.readthedocs.io/en/latest/running.html#running)
