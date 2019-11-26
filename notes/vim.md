@@ -1,8 +1,16 @@
 # Vim
+```
+I       # insert at beg of line
+A       # append at end of line
+o       # start inserting on line below
+O       # start inserting on line above
+```
+
 ## Movement
 ```
 e       #move to end of word
 w       #move forward to beg of word
+fa      # move forward to next "a"
 3w      #move forward 3 words
 b       #move back to beg of word
 3b      #move back 3 words
@@ -44,10 +52,23 @@ dd      # delete current line
 d$      # delete to end of line
 d0      # delete to beg of line
 
+dtC     # delete up to next "C"
+
 :1,.d   # delete to beg of file
 :.,$d   # delete to end of file
 ```
 
+## Changing words
+
+```
+cw      # change word
+ctA     # change up to "A"
+cc      # change entire line
+ciw     # change inside word (not clear this words differently from cw)
+ci(     # change in ()
+ci{/<"  # works the same - change inside the markers
+ca"     # change around quotes (quotes get replaced too)
+```
 ## Find and Replace
 ```
 :s/foo/bar/g         #change on current line
@@ -134,7 +155,7 @@ Note: It would be good to have a shortcut for this
 type what you want; <esc>
 
 ## Other
-Undo in command mode
 ```
-u
+u       # undo
+r       # redo
 ```
