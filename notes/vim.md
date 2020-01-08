@@ -139,6 +139,42 @@ Copying and pasting to the clipboard (so it is available outside of Vim)
 
 Note: It would be good to have a shortcut for this
 
+## Ctags
+To start, download ctags (with homebrew or apt). To set it up, in the directory
+of the project, run:
+```
+ctags -R .
+```
+
+For some languages, may need some custom set up. In particular, for R 
+(this blog post)[http://tinyheero.github.io/2017/05/13/r-vim-ctags.html]
+helped. I needed to put the following in `~/.ctags` to make sure it can pick up
+R functions:
+```
+--langdef=R
+--langmap=r:.R.r
+--regex-R=/^[ \t]*"?([.A-Za-z][.A-Za-z0-9_]*)"?[ \t]*(<-|=)[ \t]function/\1/f,Functions/
+--regex-R=/^"?([.A-Za-z][.A-Za-z0-9_]*)"?[ \t]*(<-|=)[ \t][^f][^u][^n][^c][^t][^i][^o][^n]/\1/g,GlobalVars/
+--regex-R=/[ \t]"?([.A-Za-z][.A-Za-z0-9_]*)"?[ \t]*(<-|=)[ \t][^f][^u][^n][^c][^t][^i][^o][^n]/\1/v,FunctionVariables/
+```
+And this in my `~/.vimrc`:
+```
+let g:tagbar_type_r = {
+    \ 'ctagstype' : 'r',
+    \ 'kinds'     : [
+        \ 'f:Functions',
+        \ 'g:GlobalVariables',
+        \ 'v:FunctionVariables',
+    \ ]
+\ }
+```
+(This post)[https://andrew.stwrt.ca/posts/vim-ctags/] was another good
+resource for basic use:
+* <C-]> to find the function under the cursor
+* <C-t> to get up a level
+* :tag <function name> to find a specific function
+More commands in the link for generating lists of tags and navigating them.
+
 ## Running other programs
 
 ```
