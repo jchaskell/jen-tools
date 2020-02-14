@@ -156,6 +156,14 @@ if [ -d "$DIRECTORY" ]; then
 
 fi
 ```
+Do some action if a command fails or succeeds:
+```
+{
+    command1 && command2 #success condition
+} || {
+    command3 #failure ccondition
+}
+```
 
 Test if a file exists: `if [[ -f "$file" ]]`
 
@@ -166,6 +174,13 @@ get the last folder: `"${PWD##*/}"`. For more on parameter expansion, see (this)
 ```
 ```
 
+EOF lets you easily add text as is to a file:
+```
+cat > FILE.txt <<EOF
+text here
+text here $VAR
+EOF
+```
 ## SCP
 Let's you move files to and from remote hosts.
 
