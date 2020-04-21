@@ -112,10 +112,11 @@ Add up a set of values from one field in a file
 Variables:
 `VAR=''`
 Use `$VAR` to refer to variables and `"$VAR"` to get shell to expand the
-variable name and preserve whitespace i.e. `echo "path/to/"$VAR""`
+variable name and preserve whitespace i.e. `echo "path/to/'$VAR'"`
 
 command line parameters with defaults: `X=${1:-foo}`
 
+To store the output of a command in a variable: `VAR=$(git diff --name-only)`````
 
 If / then sequence generally used:
 ```
@@ -184,7 +185,6 @@ Can also specify: `for f in dir/*.txt` to loop through all txt files in "dir"
 *Don't* parse the output of ls. See [this](http://mywiki.wooledge.org/ParsingLs)
 
 *Diff* gives you the difference in the output of two commands
-```
 
 EOF lets you easily add text as is to a file:
 ```
