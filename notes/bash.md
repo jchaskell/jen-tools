@@ -114,6 +114,8 @@ Variables:
 Use `$VAR` to refer to variables and `"$VAR"` to get shell to expand the
 variable name and preserve whitespace i.e. `echo "path/to/"$VAR""`
 
+command line parameters with defaults: `X=${1:-foo}`
+
 
 If / then sequence generally used:
 ```
@@ -156,16 +158,41 @@ if [ -d "$DIRECTORY" ]; then
 
 fi
 ```
+Do some action if a command fails or succeeds:
+```
+{
+    command1 && command2 #success condition
+} || {
+    command3 #failure ccondition
+}
+```
 
 Test if a file exists: `if [[ -f "$file" ]]`
 
 Current working directory is environmental variable `$PWD`. If you want to just
 get the last folder: `"${PWD##*/}"`. For more on parameter expansion, see (this)[https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html]
 
-*Diff* gives you the difference in the output of two commands. For example:
+### Loops
+
+Loop through files in a directory: 
 ```
+for f in *;do
+    #do something
+done
+```
+Can also specify: `for f in dir/*.txt` to loop through all txt files in "dir"
+*Don't* parse the output of ls. See [this](http://mywiki.wooledge.org/ParsingLs)
+
+*Diff* gives you the difference in the output of two commands
 ```
 
+EOF lets you easily add text as is to a file:
+```
+cat > FILE.txt <<EOF
+text here
+text here $VAR
+EOF
+```
 ## SCP
 Let's you move files to and from remote hosts.
 
