@@ -243,6 +243,10 @@ find . -name '*.pyc' -delete
 * A better way to copy everything recursively: `aws s3 sync <source-path>
     <destination-path>`
 
+## Time is a construct
+But it sometimes helps to know how long something takes. You can find that out
+by running: `time <command>`
+
 ## Tmux
 ### Really basic commands
 ```

@@ -41,6 +41,10 @@ yaw/yiw #yank
 v/V     #visual mode - lets you highlight by word (v) or by line (V) and then yank
 p/P     #paste after/before cursors
 ```
+## Shifting lines by tabs
+In insert mode: `Ctrl+d/l`
+In normal mode: `Shift+<</>>`
+In visual model: `Shift+</>`
 
 ## Deletion
 ```
