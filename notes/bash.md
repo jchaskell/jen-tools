@@ -44,7 +44,7 @@ for inclusion or exclusion of specific files or directories
 
 ## Various Commands
 
-* control-r - reverse search
+* control-r - reverse search (can scroll up by repeatedly hitting control-r)
 * control-a - jump to beginning of line
 * control-e - jump to end of line
 * control-u - clears from cursor to beginning of the line
