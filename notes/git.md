@@ -45,6 +45,9 @@ See previous n commits and edit them using `pick` or `reword` or other options
 Merge all commits from another branch as 1 commit
 `git merge --squash <branch>`
 
+Remove multiple branches using regex:
+``git branch | grep <string> | xargs git branch -d```
+`````
 ## Resources
 Add an existing project to github:
 [link](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/)   
