@@ -7,6 +7,15 @@ find . -name 'filename'
 * `mindepth` and `maxdepth` options refer to directory depth
 * Find just files (not directories): `find "hello.txt" -type f`
 
+## Disk Usage (du)
+flags:
+* -h    human readable
+* -s    total for a directory
+* -a    for all the files and directories
+* -m/k  units of megabytes or kilobytes
+* -c    includes a total line
+* --exclude can exclude types of files
+
 ## GREP
 Filters a file line by line against a pattern: `grep <pattern> <file>`
 Example: `echo '$line' | grep <pattern>`
