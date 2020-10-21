@@ -44,7 +44,7 @@ for inclusion or exclusion of specific files or directories
 
 ## Various Commands
 
-* control-r - reverse search
+* control-r - reverse search (can scroll up by repeatedly hitting control-r)
 * control-a - jump to beginning of line
 * control-e - jump to end of line
 * control-u - clears from cursor to beginning of the line
@@ -58,6 +58,7 @@ for inclusion or exclusion of specific files or directories
 * kill -9 <PID> - kill process
 * Look at a process id: `ps aux | grep pid`
 * Look at MY processes: `ps aux | grep uname`
+* List jobs by % memory used: `ps aux --sort=-%mem | head`
 * Defining variables: `var=hello`
 * Displaying variables: `echo $var` (note: echo var will return 'bar', not
     'hello')
@@ -80,7 +81,7 @@ Cut based on line numbers: `cut -c 1 doc.txt` (cuts first column)
 Cut based on fields: `cut -f 1 doc.txt` (cuts first field)
 
 ## SED
-
+Stream editor - reads a file line by line and conditionally applies operations
 Used for substitution - similar to substitution in vim: `s/ / /g`
 
 Syntax: `"hello" | sed "s/l/\*/g"`
@@ -138,6 +139,9 @@ fi
 ```
 also works. Using `[]` means it is a traditional shell `test` command that
 returns an exit code. `[[]]` is from ksh but works on other shells as well.
+### If flags
+`-le`   less than
+`-f`    checks if file exists: `if [[ -f "$file" ]]`
 
 [The first answer
 here](https://unix.stackexchange.com/questions/306111/what-is-the-difference-between-the-bash-operators-vs-vs-vs) has a good explanation
@@ -242,6 +246,10 @@ find . -name '*.pyc' -delete
 * Look at the head of a file: `aws s3 cp <file> - | head`
 * A better way to copy everything recursively: `aws s3 sync <source-path>
     <destination-path>`
+
+## Time is a construct
+But it sometimes helps to know how long something takes. You can find that out
+by running: `time <command>`
 
 ## Tmux
 ### Really basic commands

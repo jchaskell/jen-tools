@@ -39,8 +39,13 @@ yy      #yank (copy) current line
 5Y      #yank 5 lines
 yaw/yiw #yank 
 v/V     #visual mode - lets you highlight by word (v) or by line (V) and then yank
+<Esc><Esc> #exit visual mode
 p/P     #paste after/before cursors
 ```
+## Shifting lines by tabs
+In insert mode: `Ctrl+d/l`
+In normal mode: `Shift+<</>>`
+In visual model: `Shift+</>`
 
 ## Deletion
 ```
@@ -91,6 +96,11 @@ Search backward with `?` instead of '/'
 
 `3/pattern` searches for the 3rd occurrence of pattern
 
+/pattern then `gn` selects the next match; `cgn` changes the match; `dgn`
+deletes it; `gUgn` converts to uppercase
+
+`U` converts anything to upper case
+
 More complicated stuff:
 ```
 :%s/foo/<c-r><c-w>/g        # press control R/W and it fills in word under cursor
@@ -138,6 +148,10 @@ Copying and pasting to the clipboard (so it is available outside of Vim)
 * To copy the whole file `:%w !pbpaste`
 
 Note: It would be good to have a shortcut for this
+
+## Registers
+They are populated as "0 to "9 with 0 being the most recent
+`"ay{motion}` saves to register 'a'
 
 ## Ctags
 To start, download ctags (with homebrew or apt). To set it up, in the directory
@@ -187,7 +201,7 @@ More commands in the link for generating lists of tags and navigating them.
 ```
 
 ## Insert on multiple lines
-^V; j the number of times for the number of lines you want to insert on; I;
+Ctrl-V; j the number of times for the number of lines you want to insert on; I;
 type what you want; <esc>
 
 ## Other

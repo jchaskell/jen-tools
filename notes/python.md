@@ -160,3 +160,7 @@ some could be strings, while others could be lists)
 [argparse](https://docs.python.org/3/library/argparse.html)
 [logging](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial)
 [Jupyter](https://jupyter.readthedocs.io/en/latest/running.html#running)
+
+# Pyspark
+To change all column names: `df.toDF(*cols)`
+
