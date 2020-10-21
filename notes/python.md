@@ -123,6 +123,9 @@ with tempfile.TemporaryDirectory() as directory:
 To include the delimiters in the resulting list when splitting strings:
 `re.split("(delimiter)", text)`
 
+## Json
+json package (link)[https://docs.python.org/3/library/json.html]
+
 ## Things I forget
 
 `__file__` is set to the file name
