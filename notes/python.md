@@ -167,3 +167,6 @@ some could be strings, while others could be lists)
 # Pyspark
 To change all column names: `df.toDF(*cols)`
 
+To read libsvm format: `spark.read.format('libsvm').load(<file>)`
+
+
