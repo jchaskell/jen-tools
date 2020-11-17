@@ -1,5 +1,6 @@
 # Delta
 Notes on [delta lakes](https://docs.delta.io/latest/index.html).
+API docs [here](https://docs.delta.io/latest/api/python/index.html)
 
 Basic functions for reading and writing:
 
@@ -56,12 +57,18 @@ partitioning, those partitions are maintained with updates.
 The link includes information on how to change the schema, including column
 type, name, etc. 
 
+### Partitions
+To change number off files can do:
+`spark.read.format('delta').load(<path>.repartition(16).write...`
+Change just one partition:
+`spark.read.format('delta').load(<path>).where(partition).repartition().write`
+
 ### Streaming
 ``
 ```streamingdf = spark.readStream.format("rate").load()
 stream = streamingdf.selectExpr("value as id").writeStream.format("delta") \
-    .option("checkpointLocation", "path").start("final_path")
-stream.stop() # to stop the stream``
+    .option("checkpointLocation", "path").start("final_path")```    
+``stream.stop()`` # to stop the stream``
 More info on structured streaming (here)[https://docs.delta.io/latest/delta-streaming.html]
 
 ### Spark
@@ -75,4 +82,11 @@ spark = SparkSession \
   .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
   .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog") \
   .getOrCreate()``
+
+### Misc
+run `vacuum table` in sql to get rid of all of the files; can add `retain 100
+hours`
+`describe history` to see history of a table
+`describe detail` for more detail about the table including file location
+`convert to delta parquet <path>` to convert parquet to delta
 
