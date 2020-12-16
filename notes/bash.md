@@ -1,4 +1,9 @@
 # Bash
+
+## Shortcuts
+Use control+a/e to skip to beginning or end 
+Use alt/option + arrow to skip words
+
 ## Find files
 ```
 find . -name 'filename'
