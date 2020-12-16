@@ -165,7 +165,9 @@ some could be strings, while others could be lists)
 [Jupyter](https://jupyter.readthedocs.io/en/latest/running.html#running)
 
 # Pyspark
-To change all column names: `df.toDF(*cols)`
+To change all column names: `df.toDF(*cols`
+
+To add an empty table with a specific schema: `spark.createDataFrame([], schema)`
 
 To read libsvm format: `spark.read.format('libsvm').load(<file>)`
 
