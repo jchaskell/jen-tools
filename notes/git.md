@@ -50,4 +50,7 @@ Remove multiple branches using regex:
 `````
 ## Resources
 Add an existing project to github:
-[link](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/)   
+[link](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/)
+
+List the most recent commit date for each remote git branch: [link](https://gist.github.com/jasonrudolph/1810768)
+Can also do this for local branches by removing `-r` in `git branch -r`. 
