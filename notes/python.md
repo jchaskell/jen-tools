@@ -162,10 +162,11 @@ some could be strings, while others could be lists)
 [re](https://docs.python.org/3/library/re.html)
 [argparse](https://docs.python.org/3/library/argparse.html)
 [logging](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial)
-[Jupyter](https://jupyter.readthedocs.io/en/latest/running.html#running)`
+[Jupyter](https://jupyter.readthedocs.io/en/latest/running.html#running)
 
-# Pyspark
-To change all column names: `df.toDF(*cols`
+## Pyspark
+
+To change all column names: `df.toDF(*cols)`
 
 To add an empty table with a specific schema: `spark.createDataFrame([], schema)`
 
@@ -174,4 +175,9 @@ To read libsvm format: `spark.read.format('libsvm').load(<file>)`
 Fill NAs: `df.fillna(0, subset=['a', 'b'])` where subset lets you choose which
 columns to fill
 
-
+Schemas: `StructType([StructField(name='name', dataType=StringType(),
+nullable=True)])`
+Loop through a schema and change one field: `StructType([StructField(x.name,
+DoubleType(), x.nullable) if x.name == 'bad_type' else StructField(x.name,
+x.dataType, x.nullable) for x in old_schema])`
+Arrays: `ArrayType(DoubleType())`
