@@ -3,7 +3,7 @@
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    alias ls='ls --color=auto -alF'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -13,9 +13,22 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # Aliases
-alias ll='ls -alF'
+alias ls='ls --color=auto -ACF'
+alias ll='ls --color=auto -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
+# Always copy contents of directories
+alias cp='cp -rv'
+alias mv='mv -v'
+alias mkdir='mkdir -pv'
+alias grep='grep --color=auto'
+
+# Show contents of directory after moving into it
+function cd () {
+	builtin cd "$1" # builtin is necessary to override default
+	ls
+}
 
 alias ga='git add'
 alias gb='git branch'
@@ -27,6 +40,7 @@ alias gcb='git checkout -b'
 alias gcm='git commit -m'
 alias gcam='git commit -am'
 alias gm='git checkout master'
+alias gma='git checkout main'
 alias gp='git pull'
 alias gd='git diff'
 alias gl='git log'
@@ -35,6 +49,7 @@ alias gpo='git push origin'
 alias grh='git reset --hard'
 alias grm='git rebase master'
 alias gst='git stash'
+alias gcd='git checkout develop'
 
 alias ..="cd .."
 alias ...="cd ../.."
@@ -57,13 +72,31 @@ function title {
 # colors are set based on this: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
  export PS1="\$(whoami) \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] 🐱 "
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # Source other files
 for file in ~/.{extra,aliases}; do
 	if [[ -r "$file" ]] && [[ -f "$file" ]]; then
 		source "$file"
 	fi
 done
+
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
+export PATH="/opt/anaconda3/bin/python:$PATH"
+export PYTHONPATH="/opt/anaconda3/bin/python"
+
+export PAGER="less -S"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/data/conda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/data/conda/etc/profile.d/conda.sh" ]; then
+        . "/data/conda/etc/profile.d/conda.sh"
+    else
+        export PATH="/data/conda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
